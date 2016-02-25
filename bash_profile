@@ -1,15 +1,15 @@
-#export PATH="/usr/local/sbin:/usr/local/bin:$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 export PATH="$PATH:~/bin"
 source ~/bin/functions.sh
-ulimit -n 2048
+
 alias cucumber="bundle exec cucumber"
 alias rubocop="bundle exec rubocop"
+alias doco="docker-compose"
+alias domo="docker-machine"
 alias gm="git co master"
+alias be="bundle exec"
 
 export redisstart='redis-server /usr/local/etc/redis.conf'
 
-alias be="bundle exec"
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
@@ -21,6 +21,8 @@ ssh-add ~/.ssh/id_rsa
 
 source /Users/marinus.swanepoel/.oh-my-git/prompt.sh
 source ~/bin/git-completion.bash
+
+eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
 
 export NVM_DIR="/Users/marinus.swanepoel/.nvm"
