@@ -1,7 +1,3 @@
-" set t_Co=256
-" Bundle 'easysid/mod8.vim'
-" color mod8
-
 set background=dark
 Bundle 'w0ng/vim-hybrid'
 color hybrid

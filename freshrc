@@ -8,7 +8,7 @@ fresh bash_profile --file
 fresh-options --file=~/.vimrc
   fresh twe4ked/dotfiles vim/vundle_before.vim
   fresh jasoncodes/dotfiles vim/plugins/ctrlp.vim
-  fresh colorscheme
+  fresh colorscheme.vim
   fresh twe4ked/dotfiles vim/vundle_after.vim
   fresh vimrc
   fresh hackling/dotfiles vim/plugins/ctrlp.vim
