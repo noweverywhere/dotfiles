@@ -1,0 +1,15 @@
+fresh freshshell/fresh contrib/source-build.sh --file=~/.bash_profile                   # Source these files from Fresh's shell.sh
+fresh freshshell/fresh contrib/source-build.sh --file=~/.bashrc
+fresh freshshell/fresh bin/fresh --bin
+
+fresh bash_profile --file
+
+##### Vim
+fresh-options --file=~/.vimrc
+  fresh twe4ked/dotfiles vim/vundle_before.vim
+  fresh jasoncodes/dotfiles vim/plugins/ctrlp.vim
+  fresh colorscheme
+  fresh twe4ked/dotfiles vim/vundle_after.vim
+  fresh vimrc
+  fresh hackling/dotfiles vim/plugins/ctrlp.vim
+fresh-options

@@ -49,7 +49,8 @@ set colorcolumn=80,100
 set cursorline
 
 " Set theme
-colorscheme termschool
+" @jma wuz here
+" colorscheme termschool
 
 "autocmd FileType js,rb,html,sass,scss autocmd BufWritePre <buffer> :%s/\s\+$//e
 autocmd BufWritePre *.js :%s/\s\+$//e
