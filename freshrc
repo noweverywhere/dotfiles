@@ -12,4 +12,5 @@ fresh-options --file=~/.vimrc
   fresh twe4ked/dotfiles vim/vundle_after.vim
   fresh vimrc
   fresh hackling/dotfiles vim/plugins/ctrlp.vim
+  fresh hackling/dotfiles vim/plugins/nerdtree.vim
 fresh-options
