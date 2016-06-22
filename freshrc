@@ -3,6 +3,7 @@ fresh freshshell/fresh contrib/source-build.sh --file=~/.bashrc
 fresh freshshell/fresh bin/fresh --bin
 
 fresh bash_profile --file
+fresh gitconfig --file
 
 ##### Vim
 fresh-options --file=~/.vimrc
