@@ -14,6 +14,7 @@ set tabstop=2
 set foldmethod=indent         " Fold based on indentation.
 set foldlevelstart=99         " Expand all folds by default.
 set backspace=2
+set autoindent 
 
 " Disable backup. No swap files.
 set nobackup
@@ -23,10 +24,15 @@ set noswapfile
 " Window
 syntax enable       " Syntax highlighting
 set hidden          " Allow hiding buffers with unsaved changes
-set relativenumber
 set number          " Show line numbers
 set ruler           " Show cursor position
 set spelllang=en_au " Australian English
+"key mapping for tab navigation
+nmap <Tab> gt
+nmap <S-Tab> gT
+
+" F12 reloads the ~/.vimrc file
+nnoremap <F12> :source ~/.vimrc<CR>
 
 " Persistent undo
 set undofile                " Save undo's after file closes
@@ -34,11 +40,22 @@ set undodir=$HOME/.vim/undo " Where to save histories
 set undolevels=1000         " How many undos
 set undoreload=10000        " Number of lines to save
 
+" Automatically reload externally modified files when clean
+set autoread                               
+
  "Always show current position
 set ruler
 
+set spelllang=en_au
+
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
+" Keep 3 context lines above and below the cursor
+set scrolloff=3                            
+
+" Search and replace selected text
+" (http://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text)
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 " Show lin numbers
 set number
@@ -53,5 +70,19 @@ set cursorline
 " @jma wuz here
 " colorscheme termschool
 
+" CtrlP
+set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip
+
 "autocmd FileType js,rb,html,sass,scss autocmd BufWritePre <buffer> :%s/\s\+$//e
+" Removes trailing spaces
+function TrimWhiteSpace()
+  %s/\s*$//
+  ''
+:endfunction
+
+" Allow mouse scroll with vim in terminal
+set mouse=a
+
+set timeoutlen=250 " Time to wait after ESC (default causes an annoying delay)
+
 autocmd BufWritePre *.js :%s/\s\+$//e
