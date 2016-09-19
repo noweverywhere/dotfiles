@@ -1,6 +1,6 @@
 [user]
-    name = noweverywhere
-    email = marinus@noweverywhere.ca
+  name = noweverywhere
+  email = marinus@noweverywhere.ca
 [color]
   branch = auto
   diff = auto
@@ -32,7 +32,7 @@
   prompt = false
 [merge]
   tool = opendiff
-    conflictstyle = diff3
+  conflictstyle = diff3
 [alias]
   s = status
   co = checkout
@@ -55,6 +55,10 @@
   clean = git-media-clean %f
   smudge = git-media-smudge %f
 [rebase]
-    autosquash = true
+  autosquash = true
 [interactive]
 	diffFilter = diff-highlight
+[pager]
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
