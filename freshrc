@@ -2,16 +2,26 @@ fresh freshshell/fresh contrib/source-build.sh --file=~/.bash_profile           
 fresh freshshell/fresh contrib/source-build.sh --file=~/.bashrc
 fresh freshshell/fresh bin/fresh --bin
 
-fresh bash_profile --file
+fresh-options --file=~/.bash_profile 
+  fresh bash_profile
+fresh-options
+
+fresh-options --file=~/bin/bash_fun.sh
+  fresh bash_help.sh
+fresh-options
+
 fresh gitconfig --file
 
 ##### Vim
 fresh-options --file=~/.vimrc
-  fresh twe4ked/dotfiles vim/vundle_before.vim
-  fresh jasoncodes/dotfiles vim/plugins/ctrlp.vim
-  fresh colorscheme.vim
-  fresh twe4ked/dotfiles vim/vundle_after.vim
-  fresh vimrc
-  fresh hackling/dotfiles vim/plugins/ctrlp.vim
-  fresh hackling/dotfiles vim/plugins/nerdtree.vim
+ fresh twe4ked/dotfiles vim/vundle_before.vim
+ fresh jasoncodes/dotfiles vim/plugins/ctrlp.vim
+ fresh jasoncodes/dotfiles vim/plugins/ruby.vim
+ fresh jasoncodes/dotfiles vim/plugins/indent-guides.vim
+ fresh jasoncodes/dotfiles vim/plugins/gitgutter.vim
+ fresh colorscheme.vim
+ fresh twe4ked/dotfiles vim/vundle_after.vim
+ fresh vimrc
+ fresh hackling/dotfiles vim/plugins/ctrlp.vim
+ fresh hackling/dotfiles vim/plugins/nerdtree.vim
 fresh-options

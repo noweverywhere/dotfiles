@@ -1,5 +1,5 @@
 export PATH="$PATH:~/bin"
-source ~/bin/bash_fun.sh
+source ~/bin/bash_help.sh
 
 alias cucumber="bundle exec cucumber"
 alias rubocop="bundle exec rubocop"
@@ -19,6 +19,7 @@ shopt -s histappend                      # append to history, don't overwrite it
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 export PATH="~/code/plain-utils/bin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 ssh-add ~/.ssh/id_rsa
 
