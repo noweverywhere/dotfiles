@@ -1,27 +1,28 @@
-fresh freshshell/fresh contrib/source-build.sh --file=~/.bash_profile                   # Source these files from Fresh's shell.sh
-fresh freshshell/fresh contrib/source-build.sh --file=~/.bashrc
 fresh freshshell/fresh bin/fresh --bin
+fresh freshshell/fresh contrib/source-build.sh --file=~/.bash_profile
 
-fresh-options --file=~/.bash_profile 
-  fresh bash_profile
+fresh git/git contrib/completion/git-completion.bash --file=~/.gitcompletion.bash
+
+fresh-options --file=~/.bash_profile
+  fresh shell/bashrc
+  fresh shell/aliases.sh
+  fresh shell/bash_help.sh
+  fresh shell/start_into_tmux
 fresh-options
 
-fresh-options --file=~/bin/bash_fun.sh
-  fresh bash_help.sh
-fresh-options
+fresh tmux.conf --file
 
 fresh gitconfig --file
 
 ##### Vim
 fresh-options --file=~/.vimrc
- fresh twe4ked/dotfiles vim/vundle_before.vim
- fresh jasoncodes/dotfiles vim/plugins/ctrlp.vim
+ fresh vim/vundle_stuff.vim
+ fresh vim/syntax.vim
  fresh jasoncodes/dotfiles vim/plugins/ruby.vim
  fresh jasoncodes/dotfiles vim/plugins/indent-guides.vim
- fresh jasoncodes/dotfiles vim/plugins/gitgutter.vim
- fresh colorscheme.vim
- fresh twe4ked/dotfiles vim/vundle_after.vim
- fresh vimrc
+ fresh vim/plugins/ale.vim
+ fresh vim/plugins/gitgutter.vim
  fresh hackling/dotfiles vim/plugins/ctrlp.vim
- fresh hackling/dotfiles vim/plugins/nerdtree.vim
+ fresh vim/colorscheme.vim
+ fresh vim/vimrc
 fresh-options

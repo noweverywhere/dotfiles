@@ -13,19 +13,40 @@ gitbydate () {
     git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname)|%(committerdate)|%(authorname)' | sed 's/refs\/heads\///g' | column -t -s "|"
 }
 
+cuke () {
+  mv $HOME/code/website/tmp/capybara/* $HOME/code/website_cucumber_screenshots/; 
+  bundle exec cucumber $*;
+  exit_code=$?
+  if [[ $exit_code != 0 ]]
+    then open $HOME/code/website/tmp/capybara/*.png;
+  fi
+}
+
 title () {
  echo -e '\033]2;'$*'\007'
+}
+
+flow () {
+  yellow='\033[0;33m'
+  reset=`tput sgr0`
+  givenName=$*
+  branchName=${givenName// /-}
+  if [[ $givenName =~ ^GTU-[0-9] ]]; then
+    git co -b 'feature/'$branchName
+  else
+    echo -e "${yellow}Features must start with story title/id like 'GTU-1234'${reset}"
+  fi
 }
 
 #git branch
 br () {
  givenName=$*
- branchName='ms-'${givenName// /-}
+ branchName=${givenName// /-}
  git co -b $branchName
 }
 
 weather () {
- city=${*-brisbane} 
+ city=${*-brisbane}
  curl "wttr.in/${city}"
 }
 
