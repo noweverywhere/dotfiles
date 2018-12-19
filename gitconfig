@@ -34,6 +34,7 @@
   tool = opendiff
   conflictstyle = diff3
 [alias]
+	autofix = "!f() { git commit --fixup $(git log -n 1 --pretty=format:%H -- \"$GIT_PREFIX$1\") \"$GIT_PREFIX$1\"; }; f"<Paste>
   s = status
   co = checkout
   cp = cherry-pick
@@ -48,6 +49,8 @@
   abort = rebase --abort
   cont = rebase --continue
   yolo = push --force
+  pushf = push --force-with-lease
+  pushfnv = push --force-with-lease --no-verify
 [diff]
   algorithm = patience
 	compactionHeuristic = true

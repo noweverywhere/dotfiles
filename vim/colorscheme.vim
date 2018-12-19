@@ -2,8 +2,8 @@
 "Plugin 'w0ng/vim-hybrid'
 "color hybrid
 
-Plugin 'nanotech/jellybeans.vim' 
-colorscheme jellybeans
+" Plug 'nanotech/jellybeans.vim'
+" colorscheme jellybeans
 
+Plug 'marcopaganini/termschool-vim-theme'
 colorscheme termschool
-

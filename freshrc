@@ -16,13 +16,32 @@ fresh gitconfig --file
 
 ##### Vim
 fresh-options --file=~/.vimrc
- fresh vim/vundle_stuff.vim
+ fresh vim/plug-begin.vim
+ fresh vim/plugins/command-t.vim
+ fresh vim/plugins/grep.vim
  fresh vim/syntax.vim
- fresh jasoncodes/dotfiles vim/plugins/ruby.vim
- fresh jasoncodes/dotfiles vim/plugins/indent-guides.vim
+ #fresh jasoncodes/dotfiles vim/plugins/ruby.vim
+ #fresh jasoncodes/dotfiles vim/plugins/indent-guides.vim
  fresh vim/plugins/ale.vim
  fresh vim/plugins/gitgutter.vim
- fresh hackling/dotfiles vim/plugins/ctrlp.vim
  fresh vim/colorscheme.vim
+ fresh vim/plug-end.vim
  fresh vim/vimrc
+fresh-options
+
+# nvim
+fresh-options --file=~/.config/nvim/init.vim
+  fresh nvim/init.vim
+  fresh vim/plug-begin.vim
+  fresh vim/plugins/command-t.vim
+  fresh vim/plugins/neovim-fuzzy.vim
+  fresh vim/plugins/ale.vim
+  fresh vim/syntax.vim
+  fresh vim/plugins/gitgutter.vim
+  fresh vim/plugins/grepper.vim
+  fresh vim/syntax.vim
+  fresh vim/plugins/indent-guides.vim
+  fresh vim/colorscheme.vim
+  fresh vim/plug-end.vim
+  fresh vim/vimrc
 fresh-options

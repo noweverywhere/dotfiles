@@ -1,4 +1,4 @@
-Bundle 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 set signcolumn=yes
 let g:gitgutter_map_keys = 0

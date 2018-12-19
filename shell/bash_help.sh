@@ -1,3 +1,7 @@
+yellow='\033[0;33m'
+cyan='\033[1;36m'
+reset=`tput sgr0`
+
 update () {
  git co master
  git fetch --prune
@@ -14,8 +18,11 @@ gitbydate () {
 }
 
 cuke () {
-  mv $HOME/code/website/tmp/capybara/* $HOME/code/website_cucumber_screenshots/; 
-  bundle exec cucumber $*;
+  changed_cukes=`git status --porcelain | grep -E '.feature$' | cut -d' ' -f3`
+  cuke_to_run=${*-$changed_cukes}
+  echo -e "${cyan}${cuke_to_run}${reset}"
+  mv $HOME/code/website/tmp/capybara/* $HOME/code/website_cucumber_screenshots/;
+  bundle exec cucumber $cuke_to_run;
   exit_code=$?
   if [[ $exit_code != 0 ]]
     then open $HOME/code/website/tmp/capybara/*.png;
@@ -27,8 +34,6 @@ title () {
 }
 
 flow () {
-  yellow='\033[0;33m'
-  reset=`tput sgr0`
   givenName=$*
   branchName=${givenName// /-}
   if [[ $givenName =~ ^GTU-[0-9] ]]; then

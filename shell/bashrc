@@ -1,4 +1,5 @@
 source ~/.fresh/build/shell.sh
+source ~/.aws/credentials
 export TERM=xterm-256color #macOS specific for iTerm2
 export PATH="$PATH:~/bin"
 export EDITOR='vim'
