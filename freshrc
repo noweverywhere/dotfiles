@@ -1,19 +1,6 @@
 fresh freshshell/fresh bin/fresh --bin
 fresh freshshell/fresh contrib/source-build.sh --file=~/.bash_profile
 
-fresh git/git contrib/completion/git-completion.bash --file=~/.gitcompletion.bash
-
-fresh-options --file=~/.bash_profile
-  fresh shell/bashrc
-  fresh shell/aliases.sh
-  fresh shell/bash_help.sh
-  fresh shell/start_into_tmux
-fresh-options
-
-fresh tmux.conf --file
-
-fresh gitconfig --file
-
 ##### Vim
 fresh-options --file=~/.vimrc
  fresh vim/plug-begin.vim
@@ -28,6 +15,20 @@ fresh-options --file=~/.vimrc
  fresh vim/plug-end.vim
  fresh vim/vimrc
 fresh-options
+
+fresh git/git contrib/completion/git-completion.bash --file=~/.gitcompletion.bash
+
+fresh-options --file=~/.bash_profile
+  fresh shell/bashrc
+  fresh shell/aliases.sh
+  fresh shell/bash_help.sh
+  fresh shell/start_into_tmux
+fresh-options
+
+fresh tmux.conf --file
+
+fresh gitconfig --file
+
 
 # nvim
 fresh-options --file=~/.config/nvim/init.vim
@@ -45,3 +46,4 @@ fresh-options --file=~/.config/nvim/init.vim
   fresh vim/plug-end.vim
   fresh vim/vimrc
 fresh-options
+fresh freshshell/fresh bin/fresh --bin

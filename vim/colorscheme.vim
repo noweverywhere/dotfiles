@@ -6,4 +6,3 @@
 " colorscheme jellybeans
 
 Plug 'marcopaganini/termschool-vim-theme'
-colorscheme termschool
