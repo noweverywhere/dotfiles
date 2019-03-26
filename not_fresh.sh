@@ -13,6 +13,7 @@ source ~/.dotfiles/vim/syntax.vim
 source ~/.dotfiles/vim/plugins/ale.vim
 source ~/.dotfiles/vim/plugins/gitgutter.vim
 source ~/.dotfiles/vim/colorscheme.vim
+source ~/.dotfiles/vim/fzf.vim
 source ~/.dotfiles/vim/plug-end.vim
 source ~/.dotfiles/vim/vimrc
 VIM_CONFIG

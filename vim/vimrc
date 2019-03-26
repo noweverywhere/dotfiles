@@ -40,8 +40,13 @@ map <Leader>g :GrepperRg<Space>
 map <leader>G :Grepper -tool rg -open -switch -cword -noprompt<cr>
 map <Leader>' :s/"/'/g<CR>:nohlsearch<CR>
 map <Leader>" :s/'/"/g<CR>:nohlsearch<CR>
+if has('nvim')
 map <Leader>T :tabe<CR>FuzzyOpen<CR>
 map <Leader>t :FuzzyOpen<CR>
+else
+map <Leader>T :tabe<CR>FZF<CR>
+map <Leader>t :FZF<CR>
+endif
 map <Leader>n :ALENextWrap<CR>
 
 " Navigate splits with Ctrl + <direction keys>
@@ -79,8 +84,7 @@ set scrolloff=3
 set nocul
 
 " Set theme
-" @jma wuz here
-" colorscheme termschool
+colorscheme Termschool
 
 " CtrlP/Command-T
 set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.swn,*.zip
