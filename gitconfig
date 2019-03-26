@@ -19,8 +19,9 @@
   changed = green
   untracked = cyan
 [core]
-  editor = /usr/local/bin/vim
+  editor = vim
   quotepath = false
+  excludesfile = ~/.dotfiles/global-gitignore
 [branch]
   autosetuprebase = always
 [push]
