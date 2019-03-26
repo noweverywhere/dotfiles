@@ -22,7 +22,6 @@ cat <<-BASH_CONFIG > ~/.bash_profile
 source ~/.dotfiles/shell/bashrc
 source ~/.dotfiles/shell/aliases.sh
 source ~/.dotfiles/shell/bash_help.sh
-source ~/.dotfiles/shell/start_into_tmux
 BASH_CONFIG
 
 echo "alias dotfiles='~/.dotfiles/not_fresh.sh && source ~/.bash_profile'" >> ~/.bash_profile
