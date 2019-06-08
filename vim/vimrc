@@ -31,21 +31,21 @@ set spelllang=en_au " Australian English
 " statusline
 set laststatus=2 " show current file path in statusline
 
+map <Space> <Leader>
 map <Leader>\ :nohlsearch<CR>
 map <Leader>s :buffers<CR>:buffer<Space>
 map <Leader>q :bd<CR>
 map <Leader>f :Vex<CR>
 map <Leader>F :Lex<CR>
-map <Leader>g :GrepperRg<Space>
-map <leader>G :Grepper -tool rg -open -switch -cword -noprompt<cr>
+map <Leader>g :Ag <Space>
 map <Leader>' :s/"/'/g<CR>:nohlsearch<CR>
 map <Leader>" :s/'/"/g<CR>:nohlsearch<CR>
 if has('nvim')
-map <Leader>T :tabe<CR>FuzzyOpen<CR>
-map <Leader>t :FuzzyOpen<CR>
+  map <Leader>T :tabe<CR>FuzzyOpen<CR>
+  map <Leader>t :FuzzyOpen<CR>
 else
-map <Leader>T :tabe<CR>FZF<CR>
-map <Leader>t :FZF<CR>
+  map <Leader>T :tabe<CR>FZF<CR>
+  map <Leader>t :FZF<CR>
 endif
 map <Leader>n :ALENextWrap<CR>
 
