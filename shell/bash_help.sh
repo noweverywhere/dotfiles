@@ -13,7 +13,7 @@ destroy_merged_branches () {
    git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
 }
 
-gitbydate () {
+branchbydate () {
     git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname)|%(committerdate)|%(authorname)' | sed 's/refs\/heads\///g' | column -t -s "|"
 }
 
@@ -53,6 +53,10 @@ br () {
 weather () {
  city=${*-brisbane}
  curl "wttr.in/${city}"
+}
+
+whoson () {
+  lsof -nP -i4TCP:$1 | grep LISTEN
 }
 
 agreplace () {
