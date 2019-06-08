@@ -11,3 +11,4 @@ alias brs="be rspec"
 
 alias please="sudo !!"
 alias tree="tree -I node_modules"
+alias :e=vim
