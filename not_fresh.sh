@@ -1,30 +1,33 @@
 set -e
 
-pushd ~/.dotfiles > /dev/null
+DIR_OF_THIS_FILE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+DOTFILES_DIR=$DIR_OF_THIS_FILE
+
+pushd $DOTFILES_DIR > /dev/null
 
 cp gitconfig ~/.gitconfig
 cp tmux.conf ~/.tmux.conf
 
 cat <<-VIM_CONFIG > ~/.vimrc
-source ~/.dotfiles/vim/plug-begin.vim
-source ~/.dotfiles/vim/plugins/command-t.vim
-source ~/.dotfiles/vim/plugins/grep.vim
-source ~/.dotfiles/vim/syntax.vim
-source ~/.dotfiles/vim/plugins/ale.vim
-source ~/.dotfiles/vim/plugins/gitgutter.vim
-source ~/.dotfiles/vim/colorscheme.vim
-source ~/.dotfiles/vim/fzf.vim
-source ~/.dotfiles/vim/plug-end.vim
-source ~/.dotfiles/vim/vimrc
+source $DOTFILES_DIR/vim/plug-begin.vim
+source $DOTFILES_DIR/vim/plugins/command-t.vim
+source $DOTFILES_DIR/vim/plugins/grep.vim
+source $DOTFILES_DIR/vim/syntax.vim
+source $DOTFILES_DIR/vim/plugins/ale.vim
+source $DOTFILES_DIR/vim/plugins/gitgutter.vim
+source $DOTFILES_DIR/vim/colorscheme.vim
+source $DOTFILES_DIR/vim/fzf.vim
+source $DOTFILES_DIR/vim/plug-end.vim
+source $DOTFILES_DIR/vim/vimrc
 VIM_CONFIG
 
 cat <<-BASH_CONFIG > ~/.bash_profile
-source ~/.dotfiles/shell/bashrc
-source ~/.dotfiles/shell/aliases.sh
-source ~/.dotfiles/shell/bash_help.sh
+source $DOTFILES_DIR/shell/bashrc
+source $DOTFILES_DIR/shell/aliases.sh
+source $DOTFILES_DIR/shell/bash_help.sh
 BASH_CONFIG
 
-echo "alias dotfiles='~/.dotfiles/not_fresh.sh && source ~/.bash_profile'" >> ~/.bash_profile
+echo "alias dotfiles='~/code/personal/dotfiles/not_fresh.sh && source ~/.bash_profile'" >> ~/.bash_profile
 
 popd > /dev/null
 echo "⭐️"
