@@ -4,13 +4,28 @@ which -s brew
 if [[ $? != 0 ]] ; then
   echo "installing homebrew"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-else
-  echo "brew already installed, updating"
-  brew update
 fi
 
 echo "install brew dependencies"
-brew install git direnv vim rbenv tree tmux jq nvm git-flow fzf bat bash-completion nnn
+cat <<BREW_DEPS | xargs brew install
+git
+direnv
+vim
+rbenv
+tree
+tmux
+jq
+nvm
+git-flow
+fzf
+bat
+bash-completion
+nnn
+neovim
+postgresql
+puma/puma/puma-dev
+BREW_DEPS
+# Install puma-dev as a launchd agent
 
 pip3 install diff-highlight
 
@@ -30,18 +45,33 @@ else
 fi
 
 
-echo "About to clone dotfiles from git"
-mkdir -p ~/code/personal
-pushd ~/code/personal
-git clone git@github.com:noweverywhere/dotfiles.git
-~/code/personal/dotfiles/not_fresh.sh
-popd
-source ~/.bash_profile
+DOTFILES_DIR="/Users/$USER/code/personal/dotfiles/"
+if [ ! -d $DOTFILES_DIR ]; then
+  echo "About to clone dotfiles from git"
+  mkdir -p ~/code/personal
+  pushd ~/code/personal
+  git clone git@github.com:noweverywhere/dotfiles.git
+  popd
+else
+  BRANCH=$(git rev-parse --abbrev-ref HEAD)
+  if [[ "$BRANCH" != "master" ]]; then
+    echo "make sure dotfiles at $DOTFILES_DIR are on master branch";
+    exit 1;
+  fi
+  echo "updating dotfiles"
+  pushd $DOTFILES_DIR
+  git pull
+fi
+$DOTFILES_DIR/not_fresh.sh
+
+echo "Put screenshots in ~/screenshots/ instead of ~/Desktop to  keep things tidy"
+mkdir -p ~/screenshots
+defaults write com.apple.screencapture location ~/screenshots
 
 echo "setup vim config"
 # https://github.com/junegunn/vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-pbcopy < echo ":PlugInstall"
-echo "when vim opens just hit paste to install plugins"
-read
+echo ":PlugInstall" | pbcopy
+echo "when vim opens just hit colon then paste (or type in ':PlugInstall') to install plugins (hit enter to continue)"
+read FOO
 vim
