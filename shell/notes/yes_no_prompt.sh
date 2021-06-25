@@ -5,3 +5,17 @@ then
 else
   echo "you said no"
 fi
+
+confirm() {
+  # call with a prompt string or use a default
+  read -r -p "${1:-Are you sure? [y/N]} " response
+  case "$response" in
+    [yY][eE][sS]|[yY])
+      true
+      ;;
+    *)
+      false
+      ;;
+  esac
+}
+confirm "some convenient method (y/n)" && echo "that is pretty cool"

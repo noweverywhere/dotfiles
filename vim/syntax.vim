@@ -2,3 +2,4 @@
 " Plug 'mxw/vim-jsx'
 " Plug 'posva/vim-vue'
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-liquid'

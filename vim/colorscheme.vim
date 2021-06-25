@@ -6,3 +6,5 @@
 " colorscheme jellybeans
 
 Plug 'marcopaganini/termschool-vim-theme'
+Plug 'arzg/vim-colors-xcode'
+Plug 'reedes/vim-colors-pencil'

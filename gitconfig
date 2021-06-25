@@ -1,6 +1,7 @@
 [user]
   name = Marinus Swanepoel
-  email = marinus.swanepoel@tworedkites.com
+  email = marinus@noweverywhere.ca
+
 [color]
   branch = auto
   diff = auto
@@ -21,7 +22,7 @@
 [core]
   editor = vim
   quotepath = false
-  excludesfile = ~/.dotfiles/global-gitignore
+  excludesfile = ~/code/personal/dotfiles/global-gitignore
 [branch]
   autosetuprebase = always
 [push]
@@ -36,6 +37,8 @@
   conflictstyle = diff3
 [alias]
 	autofix = "!f() { git commit --fixup $(git log -n 1 --pretty=format:%H -- \"$GIT_PREFIX$1\") \"$GIT_PREFIX$1\"; }; f"<Paste>
+  stash-branch = "!f() { git checkout -b stash/"$1" && git add --all . && git commit -m WIP && git checkout -; }; f"
+
   s = status
   co = checkout
   cp = cherry-pick
@@ -61,8 +64,11 @@
 [rebase]
   autosquash = true
 [interactive]
-	diffFilter = diff-highlight
+  # diffFilter = diff-highlight
 [pager]
   log = diff-highlight | less
   show = diff-highlight | less
   diff = diff-highlight | less
+
+[includeIf "gitdir:~/code/2rk/"]
+  path = ~/code/personal/dotfiles/git/gitconfig-2rk

@@ -12,11 +12,14 @@ cat <<-VIM_CONFIG > ~/.vimrc
 source $DOTFILES_DIR/vim/plug-begin.vim
 source $DOTFILES_DIR/vim/plugins/command-t.vim
 source $DOTFILES_DIR/vim/plugins/grep.vim
+source $DOTFILES_DIR/vim/plugins/formatter.vim
 source $DOTFILES_DIR/vim/syntax.vim
 source $DOTFILES_DIR/vim/plugins/ale.vim
 source $DOTFILES_DIR/vim/plugins/gitgutter.vim
+source $DOTFILES_DIR/vim/plugins/indent-guides.vim
 source $DOTFILES_DIR/vim/colorscheme.vim
 source $DOTFILES_DIR/vim/fzf.vim
+source $DOTFILES_DIR/vim/plugins/surround.vim
 source $DOTFILES_DIR/vim/plug-end.vim
 source $DOTFILES_DIR/vim/vimrc
 VIM_CONFIG

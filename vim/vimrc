@@ -17,7 +17,7 @@ set foldlevelstart=99         " Expand all folds by default.
 set autoindent
 
 " Enable backup. Save swap file to location
-set directory^=$HOME/.vim/tmp//
+set directory^=$HOME/.vim/tmp/
 
 " Disable backup. No swap files.
 "set nobackup
@@ -25,14 +25,24 @@ set directory^=$HOME/.vim/tmp//
 
 " Window
 syntax enable       " Syntax highlighting
-set number          " Show line numbers
-set spelllang=en_au " Australian English
+set number  " Show line numbers
+set relativenumber
+set spelllang=en_ca
 
 " statusline
 set laststatus=2 " show current file path in statusline
 
+nnoremap Q @@ " Instead of stumbling into ex mode, repeat the last macro used.
+
+" Snippets
+nnoremap ,div :-1read $HOME/.vim/snippets/div.html<CR>f>a
+nnoremap ,span :-1read $HOME/.vim/snippets/span.html<CR>f>a
+autocmd FileType rust iabbrev <buffer> pl  println!()
+autocmd FileType js iabbrev <buffer> pl println!()
+
 map <Space> <Leader>
 map <Leader>\ :nohlsearch<CR>
+map <Leader>N :set relativenumber!<CR>
 map <Leader>s :buffers<CR>:buffer<Space>
 map <Leader>q :bd<CR>
 map <Leader>f :Vex<CR>
@@ -44,8 +54,8 @@ if has('nvim')
   map <Leader>T :tabe<CR>FuzzyOpen<CR>
   map <Leader>t :FuzzyOpen<CR>
 else
-  map <Leader>T :tabe<CR>FZF<CR>
-  map <Leader>t :FZF<CR>
+  " map <Leader>T :tabe<CR>FZF<CR>
+  map <Leader>y :FZF<CR>
 endif
 map <Leader>n :ALENextWrap<CR>
 
@@ -84,7 +94,8 @@ set scrolloff=3
 set nocul
 
 " Set theme
-colorscheme Termschool
+" colorscheme Termschool
+colorscheme xcodedark
 
 " CtrlP/Command-T
 set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.swn,*.zip
@@ -97,8 +108,25 @@ set showcmd
 
 autocmd BufWritePre *.js :%s/\s\+$//e
 
+" Always highlight search matches in green
+hi Search ctermbg=Green
+hi Search ctermfg=Black
+
 hi IndentGuidesOdd  ctermbg=235
 hi IndentGuidesEven ctermbg=236
 
 set wildmode=longest,list
 set wildmenu
+
+" Allows for autocomplete on path names
+set path+=**
+
+set complete+=kspell
+autocmd FileType gitcommit setlocal spell
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.txt setlocal spell
+autocmd BufRead,BufNewFile *.erb setlocal spell
+autocmd BufRead,BufNewFile *.html setlocal spell
+
+let g:netrw_liststyle = 3
+let g:netrw_winsize = -28

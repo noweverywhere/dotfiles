@@ -1,0 +1,4 @@
+https://gabri.me/blog/multiple-files-search-and-replace-in-vim
+
+:args `grep --recursive --files-with-matches 'vim is ok' .`
+:argdo %s/vim is ok/I love vim/g | update

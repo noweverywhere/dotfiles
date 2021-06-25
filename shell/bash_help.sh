@@ -51,8 +51,8 @@ br () {
 }
 
 weather () {
- city=${*-brisbane}
- curl "wttr.in/${city}"
+ city=${*-edmonton}
+ curl "v2.wttr.in/${city}"
 }
 
 whoson () {
