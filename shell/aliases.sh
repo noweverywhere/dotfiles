@@ -17,7 +17,7 @@ alias :e=vim
 
 alias clean-branches="git branch --merged | egrep -v \"(^\*|master|dev)\" | xargs git branch -d"
 
-alias current_branch="git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,'"
+alias current_branch="git rev-parse --abbrev-ref HEAD"
 alias current_branch_to_ana="cap staging deploy BRANCH=\$(current_branch) SERVER=ana"
 alias current_branch_to_maria="cap staging deploy BRANCH=\$(current_branch) SERVER=maria"
 alias current_branch_to_yara="cap staging deploy BRANCH=\$(current_branch) SERVER=yara"
