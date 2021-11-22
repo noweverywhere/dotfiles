@@ -33,7 +33,15 @@ brew "wget"
 brew "nnn"
 brew "neovim"
 brew "postgresql"
-brew "puma/puma/puma-dev"
+brew "redis"
+brew "awscli"
+brew "asimov"
+cask "slack"
+cask "iterm2"
+cask "1password"
+cask "tunnelblick"
+cask "firefox"
+cask "visual-studio-code"
 BREW_DEPS
 brew bundle
 cat <(echo "Don't modify this file directly. Instead edit setup_new_mac.sh") Brewfile > Brewfile.tmp
@@ -122,5 +130,18 @@ cat | vim - <<EOF
 EOF
 
 echo "you got to the spot after vim"
+
+mkdir ~/code/vendor
+git clone git@github.com:alb12-la/KBOS.git ~/code/vendor/kbos
+cd ~/code/vendor/kbos/
+git checkout b696696
+chmod +x install.sh
+
+npm install -g git-checkout-interactive
+
+# files that need to be copied from old computer
+# rails apps config/master.key
+# .envrc files for different projects
+# vpn config files
 
 echo "DONE 🙌"
