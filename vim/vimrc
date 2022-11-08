@@ -137,3 +137,7 @@ autocmd BufRead,BufNewFile *.html setlocal spell
 
 let g:netrw_liststyle = 3
 let g:netrw_winsize = -28
+
+highlight SignifySignAdd    ctermfg=green  guifg=#00ff00 cterm=NONE gui=NONE
+highlight SignifySignDelete ctermfg=red    guifg=#ff0000 cterm=NONE gui=NONE
+highlight SignifySignChange ctermfg=yellow guifg=#ffff00 cterm=NONE gui=NONE
