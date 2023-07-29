@@ -17,10 +17,13 @@ source $DOTFILES_DIR/vim/syntax.vim
 source $DOTFILES_DIR/vim/plugins/ale.vim
 source $DOTFILES_DIR/vim/plugins/indent-guides.vim
 source $DOTFILES_DIR/vim/plugins/signify.vim
+source $DOTFILES_DIR/vim/plugins/rails.vim
 source $DOTFILES_DIR/vim/colorscheme.vim
 source $DOTFILES_DIR/vim/fzf.vim
+source $DOTFILES_DIR/vim/plugins/fugitive.vim
 source $DOTFILES_DIR/vim/plugins/surround.vim
 source $DOTFILES_DIR/vim/plug-end.vim
+
 source $DOTFILES_DIR/vim/vimrc
 VIM_CONFIG
 
