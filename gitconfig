@@ -69,6 +69,3 @@
   log = diff-highlight | less
   show = diff-highlight | less
   diff = diff-highlight | less
-
-[includeIf "gitdir:~/code/2rk/"]
-  path = ~/code/personal/dotfiles/git/gitconfig-2rk
