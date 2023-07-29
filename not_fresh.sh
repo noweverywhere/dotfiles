@@ -25,9 +25,17 @@ source $DOTFILES_DIR/vim/vimrc
 VIM_CONFIG
 
 cat <<-BASH_CONFIG > ~/.bash_profile
+source $DOTFILES_DIR/shell/shellrc
 source $DOTFILES_DIR/shell/bashrc
 source $DOTFILES_DIR/shell/aliases.sh
-source $DOTFILES_DIR/shell/bash_help.sh
+source $DOTFILES_DIR/shell/shell_help.sh
+BASH_CONFIG
+
+cat <<-BASH_CONFIG > ~/.zshrc
+source $DOTFILES_DIR/shell/shellrc
+source $DOTFILES_DIR/shell/zshrc
+source $DOTFILES_DIR/shell/aliases.sh
+source $DOTFILES_DIR/shell/shell_help.sh
 BASH_CONFIG
 
 echo "alias dotfiles='~/code/personal/dotfiles/not_fresh.sh && source ~/.bash_profile'" >> ~/.bash_profile

@@ -86,3 +86,8 @@ function protect-secrets() {
   git secrets --install
   git secrets --register-aws
 }
+
+function lswc() {
+ dir=${*-.}
+ ls $dir | wc -l
+}

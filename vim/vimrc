@@ -19,6 +19,12 @@ set autoindent
 " user commands (left is user command starting with capital letter, right is
 " command that is executed
 command W w
+command CCC !bundle exec rubocop -A %
+command TT !bundle exec rails test %
+command TTT !bundle exec rails test %:getcharpos('.')[1]
+command LL !bundle exec erblint % --autocorrect
+
+com! -nargs=1 Tabe tabe <args>
 
 " Remap lowecase non-user (aka editor command) to a user command
 cnoreabbrev rg Rg
@@ -119,8 +125,8 @@ autocmd BufWritePre *.js :%s/\s\+$//e
 hi Search ctermbg=Green
 hi Search ctermfg=Black
 
-hi IndentGuidesOdd  ctermbg=235
-hi IndentGuidesEven ctermbg=236
+hi IndentGuidesOdd  ctermbg=236
+hi IndentGuidesEven ctermbg=235
 
 set wildmode=longest,list
 set wildmenu

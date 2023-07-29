@@ -1,3 +1,4 @@
+Don't modify this file directly. Instead edit setup_new_mac.sh
 brew "git"
 brew "direnv"
 brew "vim"
@@ -12,6 +13,7 @@ brew "git-flow"
 brew "fzf"
 brew "bat"
 brew "bash-completion"
+brew "wget"
 brew "nnn"
 brew "neovim"
 brew "postgresql"

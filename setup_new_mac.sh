@@ -22,7 +22,6 @@ brew "rbenv"
 brew "tree"
 brew "tmux"
 brew "jq"
-brew "ag"
 brew "rg"
 brew "nvm"
 brew "git-flow"
@@ -52,14 +51,14 @@ pip3 install diff-highlight
 
 # for postgres shell to work with command `psql` you need a db name after $USER
 # the below command creates that db.
-createdb
+# createdb
 
-read "Will you be using heroku on this machine?(y/n)" USE_HEROKU
-if [[ $USE_HEROKU == "y" || $USE_HEROKU == "Y" || $USE_HEROKU == "yes" || $USE_HEROKU == "Yes" ]]
-then
-  brew tap heroku/brew
-  brew install heroku
-fi
+# read "Will you be using heroku on this machine?(y/n)" USE_HEROKU
+# if [[ $USE_HEROKU == "y" || $USE_HEROKU == "Y" || $USE_HEROKU == "yes" || $USE_HEROKU == "Yes" ]]
+# then
+#   brew tap heroku/brew
+#   brew install heroku
+# fi
 
 SSH_DIR="/Users/$USER/.ssh/"
 if [ ! -d $SSH_DIR ]; then
