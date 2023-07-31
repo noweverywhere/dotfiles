@@ -3,7 +3,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias maketags='ctags -R --exclude=.git --exclude=node_modules --exclude=test'
+alias maketags='ctags -R --exclude=.git --exclude=node_modules --exclude=test -f tags'
 
 # docker related stuff
 alias doco="docker-compose"
