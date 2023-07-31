@@ -138,6 +138,8 @@ chmod +x install.sh
 
 npm install -g git-checkout-interactive
 
+$(brew --prefix)/opt/fzf/install
+
 # files that need to be copied from old computer
 # rails apps config/master.key
 # .envrc files for different projects

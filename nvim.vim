@@ -1,3 +1,139 @@
-set tabstop=2
+set ignorecase " Case insensitive search
+set incsearch  " Makes search act like search in modern browsers
+set hlsearch   " Highlight search results
+set backspace=2
+set ruler
+set colorcolumn=80,100 " show two rulers
+
+" Whitespace
+set nowrap                    " Do not wrap lines
+set expandtab                 " Use spaces instead of tabs
+set smarttab                  " Be smart when using tabs ;-)
+set softtabstop=2             " 1 tab is 2 spaces
 set shiftwidth=2
-set colorscheme=desert
+set tabstop=2
+set foldmethod=indent         " Fold based on indentation.
+set foldlevelstart=99         " Expand all folds by default.
+set autoindent
+
+" user commands (left is user command starting with capital letter, right is
+" command that is executed
+command W w
+
+" Remap lowecase non-user (aka editor command) to a user command
+cnoreabbrev rg Rg
+
+" Enable backup. Save swap file to location
+set directory^=$HOME/.vim/tmp/
+
+" Disable backup. No swap files.
+"set nobackup
+"set nowb
+
+" Window
+syntax enable       " Syntax highlighting
+set number  " Show line numbers
+set relativenumber
+set spelllang=en_ca
+
+" statusline
+set laststatus=2 " show current file path in statusline
+
+nnoremap Q @@ " Instead of stumbling into ex mode, repeat the last macro used.
+
+" Snippets
+nnoremap ,div :-1read $HOME/.vim/snippets/div.html<CR>f>a
+nnoremap ,span :-1read $HOME/.vim/snippets/span.html<CR>f>a
+autocmd FileType rust iabbrev <buffer> pl  println!()
+autocmd FileType js iabbrev <buffer> pl println!()
+
+map <Space> <Leader>
+map <Leader>\ :nohlsearch<CR>
+map <Leader>N :set relativenumber!<CR>
+map <Leader>s :buffers<CR>:buffer<Space>
+map <Leader>q :bd<CR>
+map <Leader>f :Vex<CR>
+map <Leader>F :Lex<CR>
+map <Leader>g :Ag <Space>
+map <Leader>' :s/"/'/g<CR>:nohlsearch<CR>
+map <Leader>" :s/'/"/g<CR>:nohlsearch<CR>
+if has('nvim')
+  map <Leader>T :tabe<CR>FuzzyOpen<CR>
+  map <Leader>t :FuzzyOpen<CR>
+else
+  " map <Leader>T :tabe<CR>FZF<CR>
+  map <Leader>y :FZF<CR>
+endif
+map <Leader>n :ALENextWrap<CR>
+
+" Navigate splits with Ctrl + <direction keys>
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+map <Leader>] <C-W>l
+map <Leader>[ <C-W>h
+" Search and replace selected text
+" (http://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text)
+map <Leader>r "hy:%s/<C-r>h//gc<left><left><left>
+
+"key mapping for tab navigation
+nmap <Tab> gt
+nmap <S-Tab> gT
+nmap \ ,
+
+" F12 reloads the ~/.vimrc file
+nnoremap <F12> :source ~/.vimrc<CR>
+
+" Persistent undo
+set undofile                " Save undo's after file closes
+set undodir=$HOME/.vim/undo " Where to save histories
+set undolevels=1000         " How many undos
+set undoreload=10000        " Number of lines to save
+
+" Automatically reload externally modified files when clean
+set autoread
+
+" Keep 3 context lines above and below the cursor
+set scrolloff=3
+
+" Don't Highlight cursor line
+set nocul
+
+" Set theme
+" colorscheme Termschool
+colorscheme xcodedark
+
+" CtrlP/Command-T
+set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.swn,*.zip
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+
+set showcmd
+"set timeoutlen=250 " Time to wait after ESC (default causes an annoying delay)
+
+autocmd BufWritePre *.js :%s/\s\+$//e
+
+" Always highlight search matches in green
+hi Search ctermbg=Green
+hi Search ctermfg=Black
+
+hi IndentGuidesOdd  ctermbg=235
+hi IndentGuidesEven ctermbg=236
+
+set wildmode=longest,list
+set wildmenu
+
+" Allows for autocomplete on path names
+set path+=**
+
+set complete+=kspell
+autocmd FileType gitcommit setlocal spell
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.txt setlocal spell
+autocmd BufRead,BufNewFile *.erb setlocal spell
+autocmd BufRead,BufNewFile *.html setlocal spell
+
+let g:netrw_liststyle = 3
+let g:netrw_winsize = -28
