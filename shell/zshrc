@@ -11,3 +11,4 @@ eval "$(direnv hook zsh)"
 # from ^r. Change it back for familiarity and consistency
 bindkey '^r' history-incremental-search-backward
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
