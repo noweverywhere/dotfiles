@@ -33,7 +33,15 @@ source $DOTFILES_DIR/shell/aliases.sh
 source $DOTFILES_DIR/shell/bash_help.sh
 BASH_CONFIG
 
+
+cat <<-Z_CONFIG > ~/.zprofile
+source $DOTFILES_DIR/shell/bashrc
+source $DOTFILES_DIR/shell/aliases.sh
+source $DOTFILES_DIR/shell/bash_help.sh
+Z_CONFIG
+
 echo "alias dotfiles='~/code/personal/dotfiles/not_fresh.sh && source ~/.bash_profile'" >> ~/.bash_profile
+echo "alias dotfiles='~/code/personal/dotfiles/not_fresh.sh && source ~/.zprofile'" >> ~/.bash_profile
 
 popd > /dev/null
 echo "⭐️"
