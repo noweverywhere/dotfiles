@@ -43,7 +43,7 @@ cask "firefox"
 cask "visual-studio-code"
 BREW_DEPS
 brew bundle
-cat <(echo "Don't modify this file directly. Instead edit setup_new_mac.sh") Brewfile > Brewfile.tmp
+cat <(echo "# Don't modify this file directly. Instead edit setup_new_mac.sh") Brewfile > Brewfile.tmp
 mv Brewfile{.tmp,}
 # Install puma-dev as a launchd agent
 
