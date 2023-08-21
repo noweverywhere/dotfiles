@@ -2,8 +2,7 @@
 # options docs: https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
 # color chart: https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 autoload -U colors && colors
-export PROMPT="$fg[black]%(?.%{$bg[green]%}%n.%{$bg[red]%} %? %n)%K{016}%F{123}@%F{025}%m$reset_color %F{135}%1~ %F{226}$%F{015}$reset_color"
-
+export PROMPT="%{$fg[black]%}%(?.%{$bg[green]%}%n.%{$bg[red]%} %? %n)%{$reset_color%}%{$fg[cyan]%}@%{$fg[blue]%}%m %F{135%}%1~ %F{226}% %# %F{255}%"
 
 eval "$(direnv hook zsh)"
 
