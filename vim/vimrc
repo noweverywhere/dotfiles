@@ -78,6 +78,10 @@ map <Leader>" :s/'/"/g<CR>:nohlsearch<CR>
 map <Leader>y :FZF<CR>
 
 map <Leader>n :ALENextWrap<CR>
+map <Leader>< `<
+map <Leader>> `>
+map <Leader>. `.
+map <Leader>v gv
 
 set splitbelow " cause horizontal splits to go below the current buffer
 
