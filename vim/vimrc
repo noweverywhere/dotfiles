@@ -108,7 +108,11 @@ nmap <S-Tab> gT
 nmap \ ,
 
 " F12 reloads the ~/.vimrc file
-nnoremap <F12> :source ~/.vimrc<CR>
+if has('nvim')
+  nnoremap <F12> :source ~/.config/nvim/init.vim<CR>
+else
+  nnoremap <F12> :source ~/.vimrc<CR>
+endif
 
 " Persistent undo
 set undofile                " Save undo's after file closes
