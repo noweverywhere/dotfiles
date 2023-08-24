@@ -92,6 +92,8 @@ nmap <silent> <leader>g :TestVisit<CR>
 " vim-rails jump between Test and non-test
 nmap <silent> <leader>a :A<CR>
 
+map <Leader>r :RG<CR>
+
 set splitbelow " cause horizontal splits to go below the current buffer
 
 " Navigate splits with Ctrl + <direction keys>
