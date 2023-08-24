@@ -75,13 +75,8 @@ map <Leader>b :Buffers<CR>
 map <Leader>q :bd<CR>
 map <Leader>' :s/"/'/g<CR>:nohlsearch<CR>
 map <Leader>" :s/'/"/g<CR>:nohlsearch<CR>
-if has('nvim')
-  map <Leader>T :tabe<CR>FuzzyOpen<CR>
-  map <Leader>t :FuzzyOpen<CR>
-else
-  " map <Leader>T :tabe<CR>FZF<CR>
-  map <Leader>y :FZF<CR>
-endif
+map <Leader>y :FZF<CR>
+
 map <Leader>n :ALENextWrap<CR>
 
 " Navigate splits with Ctrl + <direction keys>
