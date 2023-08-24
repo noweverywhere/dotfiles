@@ -1,3 +1,12 @@
+if has('nvim')
+  colorscheme xcodedark
+else
+  colorscheme termschool
+endif
+
+set background=dark
+set t_Co=256
+
 set ignorecase " Case insensitive search
 set incsearch  " Makes search act like search in modern browsers
 set hlsearch   " Highlight search results
