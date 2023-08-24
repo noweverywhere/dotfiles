@@ -71,7 +71,7 @@ map <Leader>k :cprev<CR>
 map <Leader>h :copen<CR>
 
 map <Leader>N :set relativenumber!<CR>
-map <Leader>s :buffers<CR>:buffer<Space>
+map <Leader>b :Buffers<CR>
 map <Leader>q :bd<CR>
 map <Leader>f :Vex<CR>
 map <Leader>F :Lex<CR>
