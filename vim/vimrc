@@ -55,8 +55,9 @@ set laststatus=2 " show current file path in statusline
 nnoremap Q @@ " Instead of stumbling into ex mode, repeat the last macro used.
 
 " Snippets
-nnoremap ,div :-1read $HOME/.vim/snippets/div.html<CR>f>a
-nnoremap ,span :-1read $HOME/.vim/snippets/span.html<CR>f>a
+nnoremap ,div i<div></div><Esc>F>i
+nnoremap ,5 i<% end %><Esc>F>i
+
 autocmd FileType rust iabbrev <buffer> pl  println!()
 autocmd FileType js iabbrev <buffer> pl println!()
 
