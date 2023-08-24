@@ -83,6 +83,15 @@ map <Leader>> `>
 map <Leader>. `.
 map <Leader>v gv
 
+" vim-test mappings
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+
+" vim-rails jump between Test and non-test
+nmap <silent> <leader>a :A<CR>
+
 set splitbelow " cause horizontal splits to go below the current buffer
 
 " Navigate splits with Ctrl + <direction keys>
