@@ -65,6 +65,11 @@ autocmd FileType js iabbrev <buffer> pl println!()
 
 map <Space> <Leader>
 map <Leader>\ :nohlsearch<CR>
+
+map <Leader>j :cnext<CR>
+map <Leader>k :cprev<CR>
+map <Leader>h :copen<CR>
+
 map <Leader>N :set relativenumber!<CR>
 map <Leader>s :buffers<CR>:buffer<Space>
 map <Leader>q :bd<CR>
