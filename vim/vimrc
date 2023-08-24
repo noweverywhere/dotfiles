@@ -58,6 +58,8 @@ nnoremap Q @@ " Instead of stumbling into ex mode, repeat the last macro used.
 nnoremap ,div i<div></div><Esc>F>i
 nnoremap ,5 i<% end %><Esc>F>i
 
+nnoremap ,e :tabe % <CR>
+
 autocmd FileType rust iabbrev <buffer> pl  println!()
 autocmd FileType js iabbrev <buffer> pl println!()
 
