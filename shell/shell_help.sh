@@ -44,7 +44,7 @@ flow () {
 }
 
 #git branch
-br () {
+gbr () {
  givenName=$*
  branchName=${givenName// /-}
  git co -b $branchName
