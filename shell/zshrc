@@ -19,3 +19,9 @@ bindkey -M vicmd v edit-command-line
 
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
+
+zstyle ':completion:*' completer _complete _ignored _approximate
+zstyle :compinstall filename '/Users/marinus/.zshrc'
+
+autoload -Uz compinit
+compinit
