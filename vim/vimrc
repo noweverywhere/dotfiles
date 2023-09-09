@@ -57,14 +57,14 @@ nnoremap Q @@ " Instead of stumbling into ex mode, repeat the last macro used.
 " Snippets
 nnoremap ,div i<div></div><Esc>F>i
 nnoremap ,5 i<% end %><Esc>F>i
-
-nnoremap ,e :tabe % <CR>
+nnoremap ,j :%! cat % \| jq<CR>
 
 autocmd FileType rust iabbrev <buffer> pl  println!()
 autocmd FileType js iabbrev <buffer> pl println!()
 
 map <Space> <Leader>
 map <Leader>\ :nohlsearch<CR>
+set gdefault "default to global substitute, now `g` sets it to replacing only first instance
 
 map <Leader>j :cnext<CR>
 map <Leader>k :cprev<CR>
@@ -73,8 +73,8 @@ map <Leader>h :copen<CR>
 map <Leader>N :set relativenumber!<CR>
 map <Leader>b :Buffers<CR>
 map <Leader>q :bd<CR>
-map <Leader>' :s/"/'/g<CR>:nohlsearch<CR>
-map <Leader>" :s/'/"/g<CR>:nohlsearch<CR>
+map <Leader>' :s/"/'/<CR>:nohlsearch<CR>
+map <Leader>" :s/'/"/<CR>:nohlsearch<CR>
 map <Leader>y :FZF<CR>
 
 map <Leader>n :ALENextWrap<CR>
