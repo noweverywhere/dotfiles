@@ -1,3 +1,5 @@
+Plug 'github/copilot.vim'
+
 if has('nvim')
   colorscheme xcodedark
 else
@@ -27,14 +29,14 @@ set autoindent
 
 " user commands (left is user command starting with capital letter, right is
 " command that is executed
-command W w
+command W ALEFix eslint | w " need to make this a lua script to deal with async nature of ALE
 command CCC !bundle exec rubocop -A %
 command LL !bundle exec erblint % --autocorrect
 
 com! -nargs=1 Tabe tabe <args>
 
 " Remap lowecase non-user (aka editor command) to a user command
-cnoreabbrev rg Rg
+" cnoreabbrev rg Rg
 
 " Enable backup. Save swap file to location
 set directory^=$HOME/.vim/tmp/
@@ -47,7 +49,9 @@ set directory^=$HOME/.vim/tmp/
 syntax enable       " Syntax highlighting
 set number  " Show line numbers
 set relativenumber
-set spelllang=en_ca
+set spelllang=en
+
+set mouse=v
 
 " statusline
 set laststatus=2 " show current file path in statusline
@@ -68,14 +72,15 @@ set gdefault "default to global substitute, now `g` sets it to replacing only fi
 
 map <Leader>j :cnext<CR>
 map <Leader>k :cprev<CR>
-map <Leader>h :copen<CR>
+
+map <Leader>s :split<CR>
 
 map <Leader>N :set relativenumber!<CR>
 map <Leader>b :Buffers<CR>
 map <Leader>q :bd<CR>
 map <Leader>' :s/"/'/<CR>:nohlsearch<CR>
 map <Leader>" :s/'/"/<CR>:nohlsearch<CR>
-map <Leader>y :FZF<CR>
+map <Leader>y :GFiles --cached --others --exclude-standard<CR>
 
 map <Leader>n :ALENextWrap<CR>
 map <Leader>< `<
@@ -127,22 +132,22 @@ set autoread
 set scrolloff=3
 
 " Don't Highlight cursor line
-set nocul
-
-" Set theme
-" colorscheme Termschool
-colorscheme xcodedark
+ set nocul
 
 " CtrlP/Command-T
 set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.swn,*.zip
 
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
+highlight ExtraWhitespace guibg=red ctermbg=red
+highlight MyGroup ctermbg=green guibg=green
+highlight MarkSignHL ctermbg=blue
+
+syn match ExtraWhitespace /\s\+$/
+syn match MyGroup /TODO/
 
 set showcmd
 "set timeoutlen=250 " Time to wait after ESC (default causes an annoying delay)
 
-autocmd BufWritePre *.js :%s/\s\+$//e
+" autocmd BufWritePre *.js :%s/\s\+$//e
 
 " Always highlight search matches in green
 hi Search ctermbg=Green
@@ -170,6 +175,7 @@ let g:netrw_winsize = -28
 highlight SignifySignAdd    ctermfg=green  guifg=#00ff00 cterm=NONE gui=NONE
 highlight SignifySignDelete ctermfg=red    guifg=#ff0000 cterm=NONE gui=NONE
 highlight SignifySignChange ctermfg=yellow guifg=#ffff00 cterm=NONE gui=NONE
+
 function! s:sy_stats_wrapper()
   let [added, modified, removed] = sy#repo#get_stats()
   let symbols = ['+', '-', '~']
@@ -193,4 +199,4 @@ function! MyStatusline()
   return ' %f '. s:sy_stats_wrapper()
 endfunction
 
-set statusline=%!MyStatusline()
+" set statusline=%!MyStatusline()

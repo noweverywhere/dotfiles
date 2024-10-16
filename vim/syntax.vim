@@ -3,3 +3,4 @@
 " Plug 'posva/vim-vue'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-liquid'
+Plug 'mechatroner/rainbow_csv'

@@ -1,1 +1,0 @@
-Plug 'chentoast/marks.nvim'
