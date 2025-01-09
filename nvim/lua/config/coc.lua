@@ -1,0 +1,33 @@
+-- -- Initialize Coc.nvim
+-- require('coc.utils').setup({}) 
+--
+-- -- Optional: Configure specific features
+-- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- local config = {
+--   -- Enable completion
+--   completion = {
+--     enable = true,
+--   },
+--   -- Enable diagnostics 
+--   diagnostics = {
+--     enable = true,
+--   },
+--   -- Enable formatting
+--   formatting = {
+--     enable = true,
+--   },
+--   -- Enable code actions
+--   code_action = {
+--     enable = true,
+--   },
+--   -- Configure LSP server options (optional)
+--   lsp = {
+--     -- Example: Configure Python server
+--     python = {
+--       server_commands = {
+--         "python" = {"python3", "-m", "pyls"},
+--       },
+--     },
+--   },
+-- }
+-- require('coc.config').setup(config)
