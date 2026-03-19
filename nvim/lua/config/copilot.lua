@@ -1,3 +1,16 @@
+require('copilot').setup({
+  filetypes = {
+    yaml = true,
+    help = false,
+    gitcommit = false,
+    gitrebase = false,
+    hgcommit = false,
+    svn = false,
+    cvs = false,
+    fugitive = false,
+    ['copilot-chat'] = false,
+  }
+})
 -- require('copilot').setup({
 --   panel = {
 --     enabled = true,
@@ -29,7 +42,7 @@
 --     },
 --   },
 --   filetypes = {
---     yaml = false,
+--     yaml = true,
 --     markdown = false,
 --     help = false,
 --     gitcommit = false,
