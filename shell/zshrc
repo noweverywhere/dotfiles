@@ -2,7 +2,12 @@
 # options docs: https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
 # color chart: https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 autoload -U colors && colors
-export PROMPT="%{$fg[black]%}%(?.%{$bg[green]%}%n.%{$bg[red]%} %? %n)%{$reset_color%}%{$fg[cyan]%}@%{$fg[blue]%}%m %F{135%}%1~ %F{226}% %# %F{255}%"
+export ANON_PROMPT="%{$fg[black]%}%(?.%{$bg[green]%}$.%{$bg[red]%} %? $ )%{$reset_color%} "
+export NON_ANON_PROMPT="%{$fg[black]%}%(?.%{$bg[green]%}%n.%{$bg[red]%} %? %n)%{$reset_color%}%{$fg[cyan]%}@%{$fg[blue]%}%m %F{135%}%1~ %F{226}% %# %F{255}%"
+export PROMPT=$NON_ANON_PROMPT
+
+alias anon='export PROMPT=$ANON_PROMPT'
+alias non_a='export PROMPT=$NON_ANON_PROMPT'
 
 eval "$(direnv hook zsh)"
 
@@ -16,12 +21,27 @@ bindkey '^r' history-incremental-search-backward
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
+# Enable Ctrl-x-e to edit command line
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
 
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
-zstyle ':completion:*' completer _complete _ignored _approximate
-zstyle :compinstall filename '/Users/marinus/.zshrc'
+# zstyle ':completion:*' completer _complete _ignored _approximate
+# zstyle :compinstall filename '/Users/marinus/.zshrc'
 
+zstyle ':completion:*' menu select
 autoload -Uz compinit
 compinit
+
+export PATH="/Users/marinus/.local/bin:$PATH"
+
+# uncomment  the following line to enable vi mode in zsh
+# set -o vi
+
+if [[ -n "$NVIM" ]]; then
+  set -o emacs
+fi
+export XDG_CONFIG_HOME=~/code/personal/dotfiles

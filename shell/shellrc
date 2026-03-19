@@ -1,8 +1,10 @@
 export TERM=xterm-256color #macOS specific for iTerm2
 export PATH="$PATH:~/bin"
-export EDITOR='vim'
+export EDITOR='nvim'
 export PATH="/opt/homebrew/bin:$PATH"
 eval "$(brew shellenv)"
+
+export MANPAGER='NP=true nvim +Man!'
 
 # [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
@@ -35,15 +37,34 @@ fi
 # export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 
-# on macos your ssh keys need to be re-added on reboot
-ssh-add
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
 
-set -o vi
+export DOTNET_ROOT=$HOME/dotnet
+export PATH=$PATH:$HOME/dotnet
 
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+source /Users/marinus/.rvm/scripts/rvm
+
+export LESS="IFRX" # Ignore case in searches, quit if one screen, and raw control chars, don't clear screen on exit. https://relentlesscoding.com/posts/make-less-options-permanent-or-the-missing-lessrc/
+
+mkdir -p /tmp/visitors
+chgrp brew /tmp/visitors
+alias tmux="TMPDIR='/tmp/visitors/' tmux"
+alias end_ssh="sudo systemsetup -setremotelogin off"
+
+alias visitor_allow="chmod -R 1777 /tmp/visitors/ && tmux server-access -a visitor && echo 'To deny visitor access use \"kick_visitor\"'"
+alias allow_visitor=visitor_allow
+alias visitor_kick="tmux server-access -d visitor && echo 'To allow visitor access again use \"visitor_allow\"'"
+alias kick_visitor=visitor_kick
+
+alias displays='open /System/Library/PreferencePanes/Displays.prefPane'
+alias remote_login_settings="open /System/Library/PreferencePanes/SharingPref.prefPane"
