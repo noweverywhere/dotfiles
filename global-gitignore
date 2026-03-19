@@ -4,3 +4,7 @@
 node_modules
 tags
 .envrc
+.venv
+venv/
+*.pem
+test_reports/

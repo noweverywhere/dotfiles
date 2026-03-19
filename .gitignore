@@ -1,2 +1,13 @@
 Brewfile
 Brefile.lock.json
+nvim/undo/*
+uv/uv-receipt.json
+
+# Local shell customizations (work/personal machine specific)
+shell/*.local.sh
+
+# GitHub Copilot auth (contains OAuth token)
+github-copilot/apps.json
+
+# btop runtime log
+btop/btop.log
