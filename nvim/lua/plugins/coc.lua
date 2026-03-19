@@ -1,1 +1,37 @@
-return { "neoclide/coc.nvim" }
+return {
+--   "neoclide/coc.nvim",
+--   config = function()
+--     -- vim.api.nvim_command([[
+--     --   " Initialize Coc.nvim
+--     --   call coc#util#init()
+--     --   " Use `:CocConfig` to open configuration file
+--     --   command! -nargs=0 CocConfig :edit $HOME/.config/nvim/coc-settings.json
+--     -- ]])
+--     -- local opts = { noremap = true, silent = true }
+--     -- vim.api.nvim_set_keymap("n", "<leader>R", "<Plug>(coc-rename)", opts)
+--     -- vim.api.nvim_set_keymap("n", "<C-d>", "<Plug>(coc-range-select)", opts)
+--     -- vim.api.nvim_set_keymap("x", "<C-d>", "<Plug>(coc-range-select)", opts)
+--     -- vim.api.nvim_set_keymap("n", "<leader>qo", "<Plug>(coc-codeaction)", opts)
+--     --
+--     -- -- GoTo code navigation
+--     -- vim.api.nvim_set_keymap("n", "gd", "<Plug>(coc-definition)", { silent = true })
+--     -- vim.api.nvim_set_keymap("n", "gy", "<Plug>(coc-type-definition)", { silent = true })
+--     -- vim.api.nvim_set_keymap("n", "gi", "<Plug>(coc-implementation)", { silent = true })
+--     -- vim.api.nvim_set_keymap("n", "gr", "<Plug>(coc-references)", { silent = true })
+--     --
+--     -- -- Use K to show documentation in preview window
+--     -- vim.api.nvim_set_keymap("n", "K", ":lua ShowDocumentation()<CR>", { noremap = true, silent = true })
+--     --
+--     -- function _G.ShowDocumentation()
+--     --   local filetype = vim.bo.filetype
+--     --   if vim.fn['coc#rpc#ready']() then
+--     --     vim.fn.CocActionAsync('doHover')
+--     --   else
+--     --     vim.api.nvim_command('normal! K')
+--     --   end
+--     -- end
+--     --
+--     -- -- Highlight the symbol and its references when holding the cursor
+--     -- vim.api.nvim_command('autocmd CursorHold * silent call CocActionAsync("highlight")')
+--   end,
+}
