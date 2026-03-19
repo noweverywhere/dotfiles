@@ -1,6 +1,6 @@
 # My Dotfiles
 
-I do the majority of my development using Tmux and vim/neovim.
+I do the majority of my development using Tmux and vim/neovim. I am open to switching to using VSCode.
 
 Back in about 2017 when I was working at `everydayhero` (when I first transitioned from using Sublime2 to using vim as my primary editor) my coworkers introduced me to this project called [fresh](https://github.com/freshshell/fresh). Fresh made it easy to import dotfiles from other people's repositories and to have the files from my dotfiles repository moved into the appropriate locations on my local workstation. Over time I stopped importing dotfiles from other people's repositories since it took more effort to understand their configurations and overwrite them when I didn't like their choices, than to just write my own from scratch. I decided to stop using fresh altogether.
 
