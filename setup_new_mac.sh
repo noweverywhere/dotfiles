@@ -1,8 +1,22 @@
 set -e
 
+# colors
+red='\033[0;31m'
+green='\033[0;32m'
+cyan='\033[0;36m'
+reset='\033[0m'
+
+printf "%b\n" "${red}This is red text${reset}"
+
+function print_line() {
+  printf "%b\n" $1
+}
+
 read -p "Don't foget to install Magnet to snap windows to the edges:
 https://itunes.apple.com/au/app/magnet/id441258766?mt=12
 (hit enter to continue)"
+
+# download nerd fonts
 
 which -s brew
 if [[ $? != 0 ]] ; then
@@ -18,7 +32,7 @@ cat <<BREW_DEPS > Brewfile
 brew "git"
 brew "direnv"
 brew "vim"
-brew "rbenv"
+# brew "rbenv"
 brew "tree"
 brew "tmux"
 brew "jq"
@@ -41,11 +55,18 @@ cask "1password"
 cask "tunnelblick"
 cask "firefox"
 cask "visual-studio-code"
+cask "karabiner-elements"
+brew "font-hack-nerd-font"
 BREW_DEPS
 brew bundle
 cat <(echo "# Don't modify this file directly. Instead edit setup_new_mac.sh") Brewfile > Brewfile.tmp
 mv Brewfile{.tmp,}
 # Install puma-dev as a launchd agent
+#
+
+print_line "${cyan}Enable Hack Nerd Font in iTerm2 as your non-ascii font${reset}" 
+print_line "iTerm2 -> Preferences -> Profiles -> Text -> Non-ASCII Font -> Hack Nerd Font"
+read -n 1 -s -r -p "Press any key to continue"
 
 pip3 install diff-highlight
 
@@ -122,7 +143,7 @@ cat | vim - <<EOF
 "ruby_version below with it
 
 !pushd ~/.vim/plugged/Command-T/ruby/command-t/ext/command-t
-!rbenv use ruby_version
+# !rbenv use ruby_version
 !ruby extconf.rb
 !make
 !popd
