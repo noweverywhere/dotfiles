@@ -8,7 +8,7 @@ return {
     --   require("copilot").setup({
     --   --   enabled = true,
     --   --   filetypes = {
-    --   --     yaml = false,
+    --   --     yaml = true,
     --   --     help = false,
     --   --     gitcommit = false,
     --   --     gitrebase = false,
@@ -38,8 +38,11 @@ return {
 
     keys = {
       -- in visual mode leader cc will open copliot chat
-      { '<leader>cc', '<cmd>CopilotChat<CR>', mode = 'v', desc = 'Open Copilot Chat' },
-      { '<leader>cc', '<cmd>CopilotChat<CR>', mode = 'n', desc = 'Open Copilot Chat' },
+      { '<leader>cc', '<cmd>CopilotChat<CR>', mode = {'v', 'n'}, desc = 'Open Copilot Chat' },
+      { '<leader>cC', '<cmd>CopilotChatReset<CR>|<cmd>CopilotChatClose<CR>', mode = {'v', 'n'}, desc = 'Close Copilot Chat' },
+      { '<leader>cd', '<cmd>CopilotChatReset<CR>', mode = {'v', 'n'}, desc = 'Reset Copilot Chat' },
+      { '<leader>cv', '<cmd>CopilotChatReset<CR>|<cmd>CopilotChat<CR>', mode = {'v', 'n'}, desc = 'Reset Copilot Chat and Notify' },
+      { '<leader>C', '<cmd>Copilot<CR>', mode = {'v', 'n'}, desc = 'Invoke Copilot Chat' },
     },
     -- See Commands section for default commands if you want to lazy load on them
   },
