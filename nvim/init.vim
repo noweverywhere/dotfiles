@@ -8,12 +8,22 @@ colorscheme slate " overriden in plugins,
 
 " Load plugins once leader has been set
 if has('nvim')
-  " Plugins
-  lua require('init')
+  if !exists('$NP') || $NP != 'true'
+    " Plugins
+    lua require('init')
+  endif
 endif
 
 " Leader Mappings Section
 " ------------------------------
+
+
+" Save file for when I accidentally type
+" :w<cr> without pressing escape first
+inoremap :w<CR> <Esc>:w<CR>
+
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader><Leader> :w<CR>
 
 " clear search highlights
 nnoremap <Leader>\ :nohlsearch<CR>
@@ -25,7 +35,7 @@ nnoremap <Leader>k :cprev<CR>
 " close the current buffer
 nnoremap <Leader>bd :bd<CR>
 
-" Search and replace
+" Search and replace quotes
 nnoremap <Leader>' :s/"/'/<CR>:nohlsearch<CR>
 nnoremap <Leader>" :s/'/"/<CR>:nohlsearch<CR>
 
@@ -49,21 +59,38 @@ nnoremap <Leader>stt <C-w>T
 nnoremap <Leader>rw :%s/\s\+$//e<CR>
 
 " yanks to clipboard
-nnoremap <Leader>y "+y
-" yanks the entire buffer to clipboard
+xnoremap <Leader>y "+y
+" yanks the entire buffer to clipboard -- could be deprecated for <Leader>yG
 nnoremap <Leader>by gg"+yG
 " replaces the entire buffer contents with the clipboard content
 nnoremap <Leader>bp :%d<Bar>put +<CR>:1d<CR>
 
-"copies file path to clipboard
+let maplocalleader = ","
+
+augroup debugger_mappings
+  " Clear existing autocommands to avoid duplicates
+  autocmd!
+  " JavaScript filetype mapping
+  autocmd FileType javascript nnoremap <buffer> <LocalLeader>bb odebugger;<ESC>
+
+  " Ruby filetype mapping
+  autocmd FileType ruby nnoremap <buffer> <LocalLeader>bb obinding.pry<ESC>
+augroup END
+
+" copies file path to clipboard
 nnoremap <Leader>fp :let @+ = expand('%')<CR>
 
-"pastes from clipboard
+" pastes from clipboard
 nnoremap <Leader>pp "+p
 nnoremap <Leader>pP "+P
-"
+
 " reloads the buffer
 nnoremap <Leader>E :e!<CR>
+
+" duplicate line and end on the bottom one
+nnoremap <leader>d yyp
+" duplicate line and end on the top one
+nnoremap <leader>D yyP
 
 " replace entire buffer contents with clipboard
 " command to replace entire buffer with clipboard: :%d|"+p
@@ -109,10 +136,11 @@ set cursorlineopt=number
 highlight CursorLineNr ctermfg=white
 
 set laststatus=2 " Always show status line - nvim default
+
 set showcmd      " Show command in bottom bar - nvim default
 
 set foldmethod=syntax
-"set foldlevelstart=1
+set foldlevelstart=4
 hi Folded ctermbg=7
 hi FoldColumn ctermbg=7
 hi Folded ctermfg=0
@@ -171,9 +199,13 @@ nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
+vnoremap <C-j> <C-W>j
+vnoremap <C-k> <C-W>k
+vnoremap <C-h> <C-W>h
+vnoremap <C-l> <C-W>l
 
 "key nnoremapping for tab navigation
-nnoremap <Tab> gt
+nnoremap <leader><Tab> gt
 nnoremap <S-Tab> gT
 
 set splitbelow
@@ -182,6 +214,7 @@ set splitright
 " Misc Section
 " ------------------------------
 
+set isfname-=:  " Don't treat ':' as part of a filename (allows normal mode `fg` to navigate to a file when it includes the line number after a colon) Or I should install https://github.com/wsdjeg/vim-fetch
 " Persistent undo
 set undofile                " Save undo's after file closes
 if has('nvim')
@@ -194,8 +227,10 @@ set undoreload=10000        " Number of lines to save
 
 set history=10000 " Is default in nvim
 
-
 set mouse=vh "mouse works in visual mode and viewing help files
+
+ "accept completion with ctrl+enter
+inoremap <C-CR> <C-y>
 
 " Enable spelling for git commit messages, markdown, and text files and markup
 " that probably contain normal copy
