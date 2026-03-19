@@ -2,6 +2,9 @@
   name = Marinus Swanepoel
   email = marinus@noweverywhere.ca
 
+[init]
+  defaultBranch = "main"
+
 [color]
   branch = auto
   diff = auto
@@ -20,7 +23,7 @@
   changed = green
   untracked = cyan
 [core]
-  editor = vim
+  editor = nvim
   quotepath = false
   excludesfile = ~/code/personal/dotfiles/global-gitignore
 [branch]
@@ -36,8 +39,16 @@
   tool = opendiff
   conflictstyle = diff3
 [alias]
+  last-branch = "! f() { git rev-parse --abbrev-ref @{-1}; }; f"
+  merge-last-branch = "! f() { git merge $(git rev-parse --abbrev-ref @{-1}); }; f"
+
 	autofix = "!f() { git commit --fixup $(git log -n 1 --pretty=format:%H -- \"$GIT_PREFIX$1\") \"$GIT_PREFIX$1\"; }; f"<Paste>
   stash-branch = "!f() { git checkout -b stash/"$1" && git add --all . && git commit -m WIP && git checkout -; }; f"
+  flast = "!f() { git tag -l --sort=-version:refname | grep -E \"^[0-9]+\\.[0-9]+\" | head -n 1; }; f"
+  fln= "!f() { git tag -l --sort=-version:refname | grep -E \"^[0-9]+\\.[0-9]+\" | head -n 1 | awk -F. '{print $1\".\"$2\".\"$3+1}' ; }; f"
+  check-branch = "!f() { git branch | grep -E '\\w+/[0-9]+\\.[0-9]+\\.[0-9]+' || echo 'No matching branch found'; }; f"
+  flow-status = "!f() { git branch | grep -E 'feature|release|hotfix|support' | awk '{print $2}' | xargs -I {} sh -c 'echo {} && git log --oneline --graph --decorate --all --no-merges --author={}'; }; f"
+  fs = flow-status
 
   s = status
   co = checkout
@@ -47,6 +58,7 @@
   br = branch
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   l = log
+  loggrep = log --grep
   a = commit -v --amend
   nb = checkout -b
   wipe = reset --hard
@@ -66,6 +78,16 @@
 [interactive]
   # diffFilter = diff-highlight
 [pager]
-  log = diff-highlight | less
-  show = diff-highlight | less
-  diff = diff-highlight | less
+  # log = diff-highlight | less
+  # show = diff-highlight | less
+  # diff = diff-highlight | less
+
+[gitflow "branch"]
+        master = master
+        develop = dev
+[gitflow "prefix"]
+        feature = topic/
+        release = release/
+        hotfix = hotfix/
+        support = support/
+        versiontag =
