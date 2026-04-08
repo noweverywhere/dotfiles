@@ -1,8 +1,12 @@
 export TERM=xterm-256color #macOS specific for iTerm2
 export PATH="$PATH:~/bin"
 export EDITOR='nvim'
-export PATH="/opt/homebrew/bin:$PATH"
-eval "$(brew shellenv)"
+if [ -d /opt/homebrew/bin ]; then
+  export PATH="/opt/homebrew/bin:$PATH"
+fi
+if command -v brew >/dev/null 2>&1; then
+  eval "$(brew shellenv)"
+fi
 
 export MANPAGER='NP=true nvim +Man!'
 
@@ -52,12 +56,17 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-source /Users/marinus/.rvm/scripts/rvm
+if [ -s "$HOME/.rvm/scripts/rvm" ]; then
+  source "$HOME/.rvm/scripts/rvm"
+fi
 
 export LESS="IFRX" # Ignore case in searches, quit if one screen, and raw control chars, don't clear screen on exit. https://relentlesscoding.com/posts/make-less-options-permanent-or-the-missing-lessrc/
 
 mkdir -p /tmp/visitors
-chgrp brew /tmp/visitors
+if (command -v getent >/dev/null 2>&1 && getent group brew >/dev/null 2>&1) || \
+   (command -v dscl >/dev/null 2>&1 && dscl . -read /Groups/brew >/dev/null 2>&1); then
+  chgrp brew /tmp/visitors 2>/dev/null || true
+fi
 alias tmux="TMPDIR='/tmp/visitors/' tmux"
 alias end_ssh="sudo systemsetup -setremotelogin off"
 
