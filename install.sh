@@ -14,8 +14,12 @@ for script in "$DOTFILES_DIR/bin/"*; do
     ln -sf "$script" ~/bin/
 done
 
+mkdir -p ~/.config
+rm -rf ~/.config/nvim
+ln -s "$DOTFILES_DIR/nvim" ~/.config/nvim
+
 cat <<-VIM_CONFIG > ~/.vimrc
-source $DOTFILES_DIR/nvim/init.vim
+source ~/.config/nvim/init.vim
 VIM_CONFIG
 
 cat <<-BASH_CONFIG > ~/.bash_profile
@@ -32,7 +36,7 @@ source $DOTFILES_DIR/shell/aliases.sh
 source $DOTFILES_DIR/shell/shell_help.sh
 BASH_CONFIG
 
-echo "alias dotfiles='~/code/personal/dotfiles/not_fresh.sh && source ~/.bash_profile'" >> ~/.bash_profile
+echo "alias dotfiles='~/code/personal/dotfiles/install.sh && source ~/.bash_profile'" >> ~/.bash_profile
 
 popd > /dev/null
 echo "⭐️"

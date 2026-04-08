@@ -114,7 +114,7 @@ else
   pushd $DOTFILES_DIR
   git pull
 fi
-$DOTFILES_DIR/not_fresh.sh
+$DOTFILES_DIR/install.sh
 
 # below repo is to disable bluetooth when computer goes to sleep
 # git clone git@github.com:alb12-la/KBOS.git
